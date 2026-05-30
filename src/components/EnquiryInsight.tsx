@@ -309,7 +309,7 @@ export default function EnquiryInsight() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+            <label className="text-xs font-semibold text-slate-600 dark:text-slate-500 uppercase tracking-wider">
               Filter Type
             </label>
             <select
@@ -326,7 +326,7 @@ export default function EnquiryInsight() {
 
           {filterType !== "All" && (
             <div className="space-y-1.5 transition-all">
-              <label className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+              <label className="text-xs font-semibold text-slate-600 dark:text-slate-500 uppercase tracking-wider">
                 {filterType === "Centre" ? "Select Centre" : filterType === "Date" ? "Select Date" : "Select Month"}
               </label>
 
@@ -386,9 +386,9 @@ export default function EnquiryInsight() {
               setPageIndex(0);
               setPageHistory([null]);
             }}
-            className={`px-4 py-2 text-sm font-semibold rounded-t-xl transition-all border-b-2 whitespace-nowrap cursor-pointer ${activeStatusTab === tab.id
+            className={`px-4 py-2 text-sm font-semibold rounded-t-xl transition-all border-b-3 whitespace-nowrap cursor-pointer ${activeStatusTab === tab.id
               ? "border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 bg-indigo-50/30 dark:bg-indigo-950/10"
-              : "border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+              : "border-transparent text-slate-600 hover:text-indigo-500 dark:hover:text-indigo-300"
               }`}
           >
             {tab.label}
