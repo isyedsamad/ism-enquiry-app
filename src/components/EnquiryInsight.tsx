@@ -32,7 +32,9 @@ import {
   X,
   Loader2,
   AlertTriangle,
-  Info
+  Info,
+  Receipt,
+  FileText
 } from "lucide-react";
 
 interface Student {
@@ -300,7 +302,7 @@ export default function EnquiryInsight() {
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6 py-4">
-      <div className="bg-white dark:bg-[#161616] rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 p-5 md:p-6 transition-all duration-300">
+      <div className="bg-white dark:bg-[#161616] rounded-xl shadow-md border border-slate-200 dark:border-slate-800 py-5 px-6 md:p-6 transition-all duration-300">
         <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-800 dark:from-indigo-400 dark:to-indigo-600 bg-clip-text text-transparent mb-4">
           Enquiry Search & Filters
         </h2>
@@ -371,7 +373,7 @@ export default function EnquiryInsight() {
 
       <div className="border-b border-slate-200 dark:border-slate-800 flex gap-2 overflow-x-auto pb-px">
         {[
-          { id: "All", label: "All Enquiries" },
+          { id: "All", label: "All" },
           { id: "New", label: "New" },
           { id: "Demo", label: "Demo" },
           { id: "Followup", label: "Follow-up" },
@@ -430,7 +432,7 @@ export default function EnquiryInsight() {
             {students.map((student) => (
               <div
                 key={student.id}
-                className="bg-white dark:bg-[#161616] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md p-5 flex flex-col justify-between transition-all duration-300"
+                className="bg-white rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md py-5 px-6 flex flex-col justify-between transition-all duration-300"
               >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-3">
@@ -442,49 +444,51 @@ export default function EnquiryInsight() {
                     </span>
                   </div>
 
-                  <div className="space-y-2 text-xs text-slate-500 dark:text-slate-400">
-                    <div className="flex items-center gap-2">
+                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center text-sm gap-2 font-medium">
+                      <FileText className="w-3.5 h-3.5 text-indigo-500/80 dark:text-indigo-400/80 shrink-0" />
+                      <span>{student.course}</span>
+                    </div>
+
+                    <div className="flex"></div>
+
+                    <div className="flex items-center gap-2 font-medium">
                       <School className="w-3.5 h-3.5 text-indigo-500/80 dark:text-indigo-400/80 shrink-0" />
                       <span>{student.centre}</span>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 font-medium">
                       <Calendar className="w-3.5 h-3.5 text-indigo-500/80 dark:text-indigo-400/80 shrink-0" />
                       <span>{student.date}</span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <BookOpen className="w-3.5 h-3.5 text-indigo-500/80 dark:text-indigo-400/80 shrink-0" />
-                      <span>{student.course}</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
+                    <div className="col-span-2 flex items-center gap-2 font-medium">
                       <UserCheck className="w-3.5 h-3.5 text-indigo-500/80 dark:text-indigo-400/80 shrink-0" />
                       <span>Enquiry By: {student.enquiryBy}</span>
                     </div>
 
                     {student.mobile && (
-                      <div className="flex items-center gap-2 pt-1">
+                      <div className="col-span-2 flex items-center gap-2 font-medium">
                         <Phone className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                         <a
                           href={`tel:${student.mobile}`}
-                          className="font-mono text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-semibold hover:underline flex items-center gap-1.5"
+                          className="text-sm font-mono text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-semibold hover:underline flex items-center gap-1.5"
                         >
-                          {student.mobile}
+                          Call Now - {student.mobile}
                         </a>
                       </div>
                     )}
 
                     {student.remark && (
-                      <div className="mt-3 p-2.5 bg-slate-50 dark:bg-slate-800/40 rounded-lg text-slate-600 dark:text-slate-400 text-xs italic flex gap-1.5 items-start">
+                      <div className="col-span-2 p-2.5 bg-slate-50 dark:bg-slate-800/40 rounded-lg text-slate-600 dark:text-slate-400 text-xs italic flex gap-1.5 items-start">
                         <MessageSquare className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
-                        <span className="line-clamp-2">{student.remark}</span>
+                        <span className="font-medium">{student.remark}</span>
                       </div>
                     )}
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex justify-end">
+                <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex justify-end">
                   <button
                     onClick={() => handleEditClick(student)}
                     className="flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 px-3 py-1.5 rounded-lg transition-all cursor-pointer"
