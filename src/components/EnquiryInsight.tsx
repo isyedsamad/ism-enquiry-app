@@ -103,8 +103,6 @@ export default function EnquiryInsight() {
         qConstraints.push(where("status", "==", "Follow-up"));
       } else if (activeStatusTab === "Admitted") {
         qConstraints.push(where("status", "==", "Admitted"));
-      } else if (activeStatusTab === "All") {
-        qConstraints.push(where("status", "in", ["New", "Demo", "Follow-up"]));
       }
 
       qConstraints.push(orderBy("createdAt", "desc"));
@@ -191,8 +189,6 @@ export default function EnquiryInsight() {
         filteredDocs = filteredDocs.filter(s => s.status === "Follow-up");
       } else if (activeStatusTab === "Admitted") {
         filteredDocs = filteredDocs.filter(s => s.status === "Admitted");
-      } else if (activeStatusTab === "All") {
-        filteredDocs = filteredDocs.filter(s => ["New", "Demo", "Follow-up"].includes(s.status));
       }
 
       const totalFiltered = filteredDocs.length;
