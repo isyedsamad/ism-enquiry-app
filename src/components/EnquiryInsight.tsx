@@ -480,7 +480,7 @@ export default function EnquiryInsight() {
                     )}
 
                     {student.remark && (
-                      <div className="col-span-2 p-2.5 bg-slate-50 dark:bg-slate-800/40 rounded-lg text-slate-600 dark:text-slate-400 text-xs italic flex gap-1.5 items-start">
+                      <div className="col-span-2 border border-slate-200 py-2.5 px-3 bg-slate-50 dark:bg-slate-800/40 rounded-lg text-slate-600 dark:text-slate-400 text-sm italic flex gap-2 items-start">
                         <MessageSquare className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
                         <span className="font-medium">{student.remark}</span>
                       </div>
