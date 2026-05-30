@@ -105,6 +105,8 @@ export default function EnquiryInsight() {
         qConstraints.push(where("status", "==", "Follow-up"));
       } else if (activeStatusTab === "Admitted") {
         qConstraints.push(where("status", "==", "Admitted"));
+      } else if (activeStatusTab === "All") {
+        qConstraints.push(where("status", "in", ["New", "Demo", "Follow-up"]));
       }
 
       qConstraints.push(orderBy("createdAt", "desc"));
@@ -191,6 +193,8 @@ export default function EnquiryInsight() {
         filteredDocs = filteredDocs.filter(s => s.status === "Follow-up");
       } else if (activeStatusTab === "Admitted") {
         filteredDocs = filteredDocs.filter(s => s.status === "Admitted");
+      } else if (activeStatusTab === "All") {
+        filteredDocs = filteredDocs.filter(s => ["New", "Demo", "Follow-up"].includes(s.status));
       }
 
       const totalFiltered = filteredDocs.length;
@@ -386,7 +390,7 @@ export default function EnquiryInsight() {
               setPageIndex(0);
               setPageHistory([null]);
             }}
-            className={`px-4 py-2 text-sm font-semibold rounded-t-xl transition-all border-b-3 whitespace-nowrap cursor-pointer ${activeStatusTab === tab.id
+            className={`px-3 py-2 text-sm font-semibold rounded-t-xl transition-all border-b-3 whitespace-nowrap cursor-pointer ${activeStatusTab === tab.id
               ? "border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 bg-indigo-50/30 dark:bg-indigo-950/10"
               : "border-transparent text-slate-600 hover:text-indigo-500 dark:hover:text-indigo-300"
               }`}

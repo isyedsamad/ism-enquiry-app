@@ -35,7 +35,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-slate-50 text-slate-900 font-sans">
         {children}
-        <ToastContainer position="top-right" autoClose={3000} theme="light" />
+        <ToastContainer position="top-right" autoClose={3000} theme="colored" />
       </body>
     </html>
   );
